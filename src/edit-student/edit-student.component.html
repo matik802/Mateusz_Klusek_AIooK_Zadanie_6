@@ -1,0 +1,37 @@
+<form [formGroup]="form4edit" (ngSubmit)='doEditStudent()'>
+Imię: <input type="text" formControlName="imie">
+Nazwisko: <input type="text" formControlName="nazwisko">
+Indeks: <input type="text" formControlName="nrIndeksu" minlength="6">
+Data urodzenia: <input type="date" formControlName="dataUrodzenia">
+<div class="error" *ngIf="form4edit.controls['imie'].errors?.['required']">
+    Imie jest obowiązkowe
+</div>
+<div class="error" *ngIf="form4edit.controls['nazwisko'].errors?.['required']">
+    Nazwisko jest obowiązkowe
+</div>
+<div class="error" *ngIf="form4edit.controls['nrIndeksu'].errors?.['required']">
+    Numer indeksu jest obowiazkowy
+</div>    
+<div class="error" *ngIf="form4edit.controls['nrIndeksu'].errors?.['minlength']">
+    Podany numer indeksu jest za krótki. Indeks powinien składać się z 6 cyfr.
+</div> 
+<div class="error" *ngIf="form4edit.controls['nrIndeksu'].errors?.['maxlength']">
+    Podany numer indeksu jest za długi. Indeks powinien składać się z 6 cyfr.
+</div> 
+<div class="error" *ngIf="form4edit.controls['nrIndeksu'].errors?.['pattern']">
+    Numer indeksu powinien składać się z samych cyfr.
+</div> 
+<div class="error" *ngIf="form4edit.controls['dataUrodzenia'].errors?.['required']">
+    Data jest obowiązkowa
+</div>
+<div class="error" *ngIf="form4edit.controls['dataUrodzenia'].errors?.['dateForAdult']">
+    Student musi być pełnoletni
+</div>
+<input [disabled]="!form4edit.valid" type="submit" value="Send">
+
+</form>
+
+<p>{{form4edit.valid}}|json</p>
+
+
+<!-- <p>{{form4edit.value}}</p> -->
